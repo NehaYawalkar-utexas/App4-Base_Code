@@ -51,18 +51,18 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 
 	
 	
-	var allergy_count = 0;
-        var cold_count = 0;
+	var pregnancy_count = 0;
+        var menstruation_count = 0;
 	//these are counters: they record how many questions were answered as "yes" for allergy or cold respectively
 	
 
-        function allergyAdd(){
-            allergy_count = allergy_count + 1;
+        function pregnancyAdd(){
+            pregnancy_count = pregnancy_count + 1;
 		//alert(allergy_count); commenting this part out because I didn't need it for the code to function
 		//this function adds 1 to allergy_count every time the user answers a question that indicates allergy symptoms
         }
-        function coldAdd(){
-            cold_count = cold_count + 1;
+        function menstruationAdd(){
+            menstruation_count = menstruation_count + 1;
 		//this function adds 1 to cold_count every time the user answers a question that indicates cold symptoms
 	}	
 	function resultsPercentages(){
@@ -84,9 +84,9 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 		**/
 		
 		var resultText = document.getElementById("results"); // this will call into action the paragraph titled "results", located on page 5
-		var allergyPercent = (allergy_count/4)*100; // this calculates the allergy percentage
-		var coldPercent = (cold_count/4)*100; // this calculates the cold percentage
-		resultText.innerHTML = "Percentage of allergies =" + allergyPercent + "%" + "<br> Percentage of cold =" + coldPercent + "%";
+		var pregnancyPercent = (pregnancy_count/4)*100; // this calculates the allergy percentage
+		var menstruationPercent = (menstruation_count/4)*100; // this calculates the cold percentage
+		resultText.innerHTML = "Percentage of pregnancy =" + pregnancyPercent + "%" + "<br> Percentage of menstruation =" + menstruationPercent + "%";
 		// this function edits the variable resultText, which refers to the paragraph titled "results" located on page 5. 
 		// the page updates to reflect the results aka relative percentages of each diagnosis type
 		
