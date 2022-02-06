@@ -6,26 +6,221 @@ THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.
  
  
 Authors in chronological order of contribution:
-Author 1
-Author 2
- 
+Tim Riedel
+Neha Yawalkar 
 Further Information:
-http://diystream.cns.utexas.edu/
-
+http://cns.utexas.edu/fri
+ 
 Research Educator:
 Timothy Riedel
 triedel@utexas.edu
  
 Brief Description of Goal of Code:
-blah, blah, blah,
- 
-Known Issues:
-blah, blah, blah, blah
--->
+This program asks a series of diagnosis questions to asses a person experiencing allergy and cold symptoms. 
+By compiling yes or no responses, the code will determine how likely each of the diagnoses are in terms of percentages. 
 
+
+
+Known Issues:
+Results button was appearing on front page, not results page (resolved)
+Results would not appear upon click of "Show Results" button (resolved)
+"Show Results" button was overlapping with header section (resolved)
+
+https://www.w3schools.com/w3css/default.asp
+https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-file
+-->
+	
    <head> 
-      
-	   PUT YOUR OLD CODE IN HERE
-	   
-   </body>
+      <title>Cold or Allergy?</title>  
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <link rel="stylesheet" href="w3.css">
+      <link rel="stylesheet" href="w3-colors-flat.css">
+   </head> 
+
+
+<script>
+        var allergy_count = 0;
+        var cold_count = 0;
+	//these are counters: they record how many questions were answered as "yes" for allergy or cold respectively
+	
+
+        function allergyAdd(){
+            allergy_count = allergy_count + 1;
+		//alert(allergy_count); commenting this part out because I didn't need it for the code to function
+		//this function adds 1 to allergy_count every time the user answers a question that indicates allergy symptoms
+        }
+        function coldAdd(){
+            cold_count = cold_count + 1;
+		//this function adds 1 to cold_count every time the user answers a question that indicates cold symptoms
+	}	
+	function resultsPercentages(){
+		
+		/**
+		in-depth explanation of this function:
+		
+		originally, there is a paragraph on the results page called "results" that is completely empty.
+		it is empty because we don't have any results at first.
+		as the user answers the questions, the data gets collected in the two counter variables for allergy and cold.
+		by the time the user reaches the results page, all the data has been collected. now results can be calculated.
+		clicking the button "show results" on the results page will call a function called resultsPercentages(). 
+		This function takes the collected data from the counters and calculates the results. 
+		In this program, it calculates what percentage of answers refers to each diagnosis.
+		once these results have been calculated, the function prints the results into the previously empty paragraph.
+		the way it does this is by directly editing the content of the paragraph. 
+		as a result, once the button "Show Results" has been pressed, the user will be able to see their percentages appear under the button.
+		
+		**/
+		
+		var resultText = document.getElementById("results"); // this will call into action the paragraph titled "results", located on page 5
+		var allergyPercent = (allergy_count/4)*100; // this calculates the allergy percentage
+		var coldPercent = (cold_count/4)*100; // this calculates the cold percentage
+		resultText.innerHTML = "Percentage of allergies =" + allergyPercent + "%" + "<br> Percentage of cold =" + coldPercent + "%";
+		// this function edits the variable resultText, which refers to the paragraph titled "results" located on page 5. 
+		// the page updates to reflect the results aka relative percentages of each diagnosis type
+		
+	}
+
+  </script>
+
+
+
+<style>	
+.body {
+     margin: 0em;
+}
+
+.page {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: -100vw;
+    overflow-y: auto;
+    z-index: 0;
+    background-color: hsl(0,0%,100%);
+}
+
+  .page:target {
+    left: 0vw;
+    z-index: 1;
+}
+</style>
+
+<body>
+	
+	
+	
+	
+	<!-- in-depth explanation of page layout:
+Each assessment question is stored on its own "page". "Page" is a type of element used to organize this website.
+This website uses "div" tag to separate the content of each "page" into sections.
+All "page" elements belong to the same "class" and thus share certain common attributes, such as style and color scheme.
+The "id" of each "page" is unique, and is used to navigate through the website and access each specific page.
+The title of each page is formatted using the <h1> tag, which makes it look big like a header.
+The <p> tag is used to display normal text in paragraph form. 
+<a> tag is used for links. Within the <a> tag includes several additional instructions. 
+The "href" tag describes where the link should direct the user to. 
+In these examples, href is always directing the user to a different page within the website, as dictated by the "#(page)" that follows it.
+The onclick command is defined using Javascript. onclick causes an action to happen upon clicking the link.
+In these examples, onclick is used to add a tally to its designated counter variable, allergy or cold, which are both defined in the script code.
+In the <a> tag, there is also a class defined as: class="w3-btn w3-grey w3-round". 
+This class makes the links on each page appear like clickable buttons that are grey and round.
+The text located between the front and back <a> tags are the text that the link appears as. These words represent the words on the clickable buttons. 
+This same format is copied for all pages. Only the addresses of the links and the functions of the buttons change based on the purpose of each page. 
+These functions and addresses are specified line by line in the code comments below. 
+ -->
+	
+	
+<div id="header" class="w3-container w3-flat-carrot">
+	<h1>Cold or Allergies?</h1> <!-- this is the title (the name that expresses on the brower tab) -->
+</div>
+	
+<div id="content" class="w3-container"> <!-- this section introduces the purpose of the app-->
+	<p>Are you feeling like you might have a cold but wonder if it is allergies. Answer a few short questions to find out!</p>
+	
+	<a href="#one" class="w3-btn w3-grey w3-round"> Get Started </a> <!-- this is a button that introduces the first question by directing to page one-->
+	
+	<p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at 		Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only. Any user of this code 			does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.</p>
+ 	
+	<p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
+
+<div class="page" id="one"> <!-- this is the code for page one, including question 1-->
+	<div id="header" class="w3-container w3-flat-carrot">
+		<h1>Question 1</h1>
+	</div>
+	
+    	<div id="content" class="w3-container">
+        <p>Are your eyes watery or itchy?</p>    
+		<!-- below are two buttons that say yes and no, then update the allergy counter or cold counter respectively. Also, directs to page two.-->
+		<a href="#two" onclick="allergyAdd();" class="w3-btn w3-grey w3-round"> Yes </a> 
+		<a href="#two" onclick="coldAdd();" class="w3-btn w3-grey w3-round"> No </a> 
+    	</div>
+	
+</div>
+
+<div class="page" id="two"> <!-- this is the code for page two, including question 2-->
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 2</h1>
+	</div>
+	
+	<div id="content" class="w3-container">
+	<p>Do you have a fever?</p>    
+		<!-- below are two buttons that say yes and no, then update the allergy counter or cold counter respectively. Also, directs to page three.-->
+		<a href="#three" onclick="coldAdd();" class="w3-btn w3-grey w3-round"> Yes </a>
+		<a href="#three" onclick="allergyAdd();" class="w3-btn w3-grey w3-round"> No </a>
+	</div>
+</div>	
+	
+<div class="page" id="three"> <!-- this is the code for page three, including question 3-->
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 3</h1>
+	</div>
+	
+	<div id="content" class="w3-container">
+	<p>Do you have a sore throat?</p>    
+		<!-- below are two buttons that say yes and no, then update the allergy counter or cold counter respectively. Also, directs to page four.-->
+		<a href="#four" onclick="coldAdd();" class="w3-btn w3-grey w3-round"> Yes </a>
+		<a href="#four" onclick="allergyAdd();" class="w3-btn w3-grey w3-round"> No </a>
+	</div>
+</div>	
+	
+<div class="page" id="four"> <!-- this is the code for page four, including question 4-->
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 4</h1>
+	</div>
+	
+	<div id="content" class="w3-container">
+	<p>Are your symptoms seasonal or chronic?</p>  
+		<!-- below are two buttons that say yes and no, then update the allergy counter or cold counter respectively. Also, directs to page five.-->
+		<a href="#five" onclick="allergyAdd();" class="w3-btn w3-grey w3-round"> Yes </a>
+		<a href="#five" onclick="coldAdd();" class="w3-btn w3-grey w3-round"> No </a>
+		
+		
+
+	</div>
+</div>	
+	
+<div class="page" id="five"> <!-- this is the code for page five. it will be edited to display the quiz result percentages once "results" button is pressed-->
+	<div class="w3-container w3-flat-carrot">
+		<h1>Show Results</h1>
+	</div>
+	
+	<div id="content" class="w3-container">
+	<p>Show your results now</p>
+	<!-- below is a button that says "Show Results", that calls the function resultsPercentages() to calculate the percentages of each response and display on the screen.-->
+	<a onclick="resultsPercentages();" class="w3-btn w3-grey w3-round">Show Results</a>
+	<p id="results"></p>    
+		
+		
+	</div>
+</div>		
+	
+
+
+<footer class="w3-bottom w3-container w3-flat-carrot">
+	<p>DIY!</p>
+</footer>
+
+</body>
 </html>
