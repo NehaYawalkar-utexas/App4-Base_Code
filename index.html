@@ -46,23 +46,24 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
        alert("This file last modified  " + docMod);
        console.log("This file last modified  " + docMod);
 // If you find the alert box annoying, comment out that line and timestamp will still show up in the debugging console
+	
+	
 
 
 	
 	
 	var pregnancy_count = 0;
         var menstruation_count = 0;
-	//these are counters: they record how many questions were answered as "yes" for allergy or cold respectively
+	//these are counters: they record how many questions were answered as "yes" for pregnancy or menstruation respectively
 	
 
         function pregnancyAdd(){
             pregnancy_count = pregnancy_count + 1;
-		//alert(allergy_count); commenting this part out because I didn't need it for the code to function
-		//this function adds 1 to allergy_count every time the user answers a question that indicates allergy symptoms
+		//this function adds 1 to pregnancy_count every time the user answers a question that indicates pregnancy symptoms
         }
         function menstruationAdd(){
             menstruation_count = menstruation_count + 1;
-		//this function adds 1 to cold_count every time the user answers a question that indicates cold symptoms
+		//this function adds 1 to menstruation_count every time the user answers a question that indicates menstruation symptoms
 	}	
 	function resultsPercentages(){
 		
@@ -71,7 +72,7 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 		
 		originally, there is a paragraph on the results page called "results" that is completely empty.
 		it is empty because we don't have any results at first.
-		as the user answers the questions, the data gets collected in the two counter variables for allergy and cold.
+		as the user answers the questions, the data gets collected in the two counter variables for pregnancy and menstruation.
 		by the time the user reaches the results page, all the data has been collected. now results can be calculated.
 		clicking the button "show results" on the results page will call a function called resultsPercentages(). 
 		This function takes the collected data from the counters and calculates the results. 
@@ -83,8 +84,8 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 		**/
 		
 		var resultText = document.getElementById("results"); // this will call into action the paragraph titled "results", located on page 5
-		var pregnancyPercent = (pregnancy_count/4)*100; // this calculates the allergy percentage
-		var menstruationPercent = (menstruation_count/4)*100; // this calculates the cold percentage
+		var pregnancyPercent = (pregnancy_count/4)*100; // this calculates the pregnancy percentage
+		var menstruationPercent = (menstruation_count/4)*100; // this calculates the menstruation percentage
 		resultText.innerHTML = "Percentage of pregnancy =" + pregnancyPercent + "%" + "<br> Percentage of menstruation =" + menstruationPercent + "%";
 		// this function edits the variable resultText, which refers to the paragraph titled "results" located on page 5. 
 		// the page updates to reflect the results aka relative percentages of each diagnosis type
